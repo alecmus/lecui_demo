@@ -27,14 +27,16 @@ public:
 		ctrls_.minimize(false);
 		ctrls_.resize(false);
 		apprnc_.theme(lecui::themes::light);
-		dim_.size({ 350, 400 });
+		dim_.size({ 280, 320 });
 
 		auto& page = page_man_.add("home");
 
 		lecui::widgets::image_view avatar(page, "avatar");
+		avatar().rect.size(130, 130);
 		avatar().rect.place({ margin_, page.size().width - margin_,
 			margin_, margin_ + (dim_.size().height / 2.f) },
 			50.f, 0.f);
+		avatar().quality = lecui::image_quality::high;
 		avatar().file = "images\\avatar.png";
 
 		lecui::widgets::text_field username(page, "username");
