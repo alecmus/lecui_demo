@@ -56,7 +56,7 @@ public:
 		do_login().rect.snap_to(password().rect,
 			rect::snap_type::bottom, 1.5f * margin_);
 		do_login().text = "Login";
-		do_login().events().click = [this]() { on_login(); };
+		do_login().events().action = [this]() { on_login(); };
 
 		page_man_.show("home");
 		return true;
