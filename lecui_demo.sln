@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lecui_minimal", "lecui_minimal\lecui_minimal.vcxproj", "{D82649E0-987A-4F2E-80CB-97E7E815F6DF}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lecui_login", "lecui_login\lecui_login.vcxproj", "{855B74D2-81F0-47D8-8255-38F774E571E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{D82649E0-987A-4F2E-80CB-97E7E815F6DF}.Release|x64.Build.0 = Release|x64
 		{D82649E0-987A-4F2E-80CB-97E7E815F6DF}.Release|x86.ActiveCfg = Release|Win32
 		{D82649E0-987A-4F2E-80CB-97E7E815F6DF}.Release|x86.Build.0 = Release|Win32
+		{855B74D2-81F0-47D8-8255-38F774E571E7}.Debug|x64.ActiveCfg = Debug|x64
+		{855B74D2-81F0-47D8-8255-38F774E571E7}.Debug|x64.Build.0 = Debug|x64
+		{855B74D2-81F0-47D8-8255-38F774E571E7}.Debug|x86.ActiveCfg = Debug|Win32
+		{855B74D2-81F0-47D8-8255-38F774E571E7}.Debug|x86.Build.0 = Debug|Win32
+		{855B74D2-81F0-47D8-8255-38F774E571E7}.Release|x64.ActiveCfg = Release|x64
+		{855B74D2-81F0-47D8-8255-38F774E571E7}.Release|x64.Build.0 = Release|x64
+		{855B74D2-81F0-47D8-8255-38F774E571E7}.Release|x86.ActiveCfg = Release|Win32
+		{855B74D2-81F0-47D8-8255-38F774E571E7}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
