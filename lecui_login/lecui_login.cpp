@@ -21,17 +21,15 @@ class login : public form {
 	const string username_ = "User";
 	const string password_ = "password";
 
-public:
-	login(const string& caption, bool& logged_in) :
-		form(caption),
-		logged_in_(logged_in) {}
-
-	bool on_layout(string& error) override {
+	bool on_initialize(std::string& error) {
 		ctrls_.minimize(false);
 		ctrls_.resize(false);
 		apprnc_.theme(themes::light);
 		dim_.size({ 280, 320 });
+		return true;
+	}
 
+	bool on_layout(string& error) override {
 		auto& page = page_man_.add("home");
 
 		widgets::image_view avatar(page, "avatar");
@@ -79,6 +77,11 @@ public:
 		}
 		catch (const std::exception& e) { message("Error: " + string(e.what())); }
 	}
+
+public:
+	login(const string& caption, bool& logged_in) :
+		form(caption),
+		logged_in_(logged_in) {}
 };
 
 int main() {
