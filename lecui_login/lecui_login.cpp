@@ -22,10 +22,10 @@ class login : public form {
 	const string password_ = "password";
 
 	bool on_initialize(std::string& error) {
-		ctrls_.minimize(false);
-		ctrls_.resize(false);
+		ctrls_.allow_minimize(false);
+		ctrls_.allow_resize(false);
 		apprnc_.theme(themes::light);
-		dim_.size({ 280, 320 });
+		dim_.set_size({ 280, 320 });
 		return true;
 	}
 
@@ -35,7 +35,7 @@ class login : public form {
 		widgets::image_view avatar(page, "avatar");
 		avatar().rect.size(130, 130);
 		avatar().rect.place({ margin_, page.size().width - margin_,
-			margin_, margin_ + (dim_.size().height / 2.f) },
+			margin_, margin_ + (dim_.get_size().height / 2.f) },
 			50.f, 0.f);
 		avatar().quality = image_quality::high;
 		avatar().file = "images\\avatar.png";
