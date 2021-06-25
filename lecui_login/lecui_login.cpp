@@ -21,7 +21,7 @@ class login : public form {
 	const string username_ = "User";
 	const string password_ = "password";
 
-	bool on_initialize(std::string& error) {
+	bool on_initialize(std::string& error) override {
 		ctrls_.allow_minimize(false);
 		ctrls_.allow_resize(false);
 		apprnc_.theme(themes::light);
