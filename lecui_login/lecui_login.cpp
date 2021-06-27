@@ -32,28 +32,26 @@ class login : public form {
 	bool on_layout(string& error) override {
 		auto& page = page_man_.add("home");
 
-		widgets::image_view avatar(page, "avatar");
-		avatar().rect.size(130, 130);
-		avatar().rect.place({ margin_, page.size().width - margin_,
-			margin_, margin_ + (dim_.get_size().height / 2.f) },
-			50.f, 0.f);
-		avatar().quality = image_quality::high;
-		avatar().file = "images\\avatar.png";
+		widgets::image_view_builder avatar(page, "avatar");
+		avatar()
+			.file("images\\avatar.png").quality(image_quality::high)
+			.rect()
+				.size(130, 130)
+				.place({ margin_, page.size().width - margin_,
+					margin_, margin_ + (dim_.get_size().height / 2.f) },
+					50.f, 0.f);
 
-		widgets::text_field username(page, "username");
-		username().rect.snap_to(avatar().rect,
-			rect::snap_type::bottom, 3.f * margin_);
+		widgets::text_field_builder username(page, "username");
+		username().rect().snap_to(avatar().rect(), rect::snap_type::bottom, 3.f * margin_);
 		username().events().action = [&]() { on_login(); };
 
-		widgets::password_field password(page, "password");
-		password().rect.snap_to(username().rect,
-			rect::snap_type::bottom, margin_);
+		widgets::password_field_builder password(page, "password");
+		password().rect().snap_to(username().rect(), rect::snap_type::bottom, margin_);
 		password().events().action = [&]() { on_login(); };
 
-		widgets::button do_login(page);
-		do_login().rect.snap_to(password().rect,
-			rect::snap_type::bottom, 1.5f * margin_);
-		do_login().text = "Login";
+		widgets::button_builder do_login(page);
+		do_login().text("Login")
+			.rect().snap_to(password().rect(), rect::snap_type::bottom, 1.5f * margin_);
 		do_login().events().action = [this]() { on_login(); };
 
 		page_man_.show("home");
@@ -62,8 +60,8 @@ class login : public form {
 
 	void on_login() {
 		try {
-			auto& username = widgets::text_field::specs(*this, "home/username").text;
-			auto& password = widgets::text_field::specs(*this, "home/password").text;
+			auto& username = widgets::text_field_builder::specs(*this, "home/username").text();
+			auto& password = widgets::text_field_builder::specs(*this, "home/password").text();
 
 			if (username.empty() || password.empty())
 				return;
