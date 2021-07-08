@@ -13,7 +13,7 @@ using std::string;
 
 class login : public form {
 	const float margin_ = 10.f;
-	page_management page_man_{ *this };
+	page_manager page_man_{ *this };
 	controls ctrls_{ *this };
 	appearance apprnc_{ *this };
 	dimensions dim_{ *this };
