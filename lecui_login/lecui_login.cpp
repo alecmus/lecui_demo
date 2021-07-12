@@ -12,49 +12,50 @@ using namespace liblec::lecui;
 using std::string;
 
 class login : public form {
-	const float margin_ = 10.f;
-	page_manager page_man_{ *this };
-	controls ctrls_{ *this };
-	appearance apprnc_{ *this };
-	dimensions dim_{ *this };
-	bool& logged_in_;
-	const string username_ = "User";
-	const string password_ = "password";
+	const float _margin = 10.f;
+	page_manager _page_man{ *this };
+	controls _ctrls{ *this };
+	appearance _apprnc{ *this };
+	dimensions _dim{ *this };
+	bool& _logged_in;
+	const string _username = "User";
+	const string _password = "password";
 
 	bool on_initialize(std::string& error) override {
-		ctrls_.allow_minimize(false);
-		ctrls_.allow_resize(false);
-		apprnc_.theme(themes::light);
-		dim_.set_size({ 280, 320 });
+		_ctrls
+			.allow_minimize(false)
+			.allow_resize(false);
+		_apprnc.theme(themes::light);
+		_dim.set_size({ 280, 320 });
 		return true;
 	}
 
 	bool on_layout(string& error) override {
-		auto& page = page_man_.add("home");
+		auto& page = _page_man.add("home");
 
 		widgets::image_view_builder avatar(page, "avatar");
 		avatar()
 			.file("images\\avatar.png").quality(image_quality::high)
 			.rect()
 				.size(130, 130)
-				.place({ margin_, page.size().width - margin_,
-					margin_, margin_ + (dim_.get_size().height / 2.f) },
+				.place({ _margin, page.size().width - _margin,
+					_margin, _margin + (_dim.get_size().height / 2.f) },
 					50.f, 0.f);
 
 		widgets::text_field_builder username(page, "username");
-		username().rect().snap_to(avatar().rect(), rect::snap_type::bottom, 3.f * margin_);
+		username().rect().snap_to(avatar().rect(), rect::snap_type::bottom, 3.f * _margin);
 		username().events().action = [&]() { on_login(); };
 
 		widgets::password_field_builder password(page, "password");
-		password().rect().snap_to(username().rect(), rect::snap_type::bottom, margin_);
+		password().rect().snap_to(username().rect(), rect::snap_type::bottom, _margin);
 		password().events().action = [&]() { on_login(); };
 
 		widgets::button_builder do_login(page);
 		do_login().text("Login")
-			.rect().snap_to(password().rect(), rect::snap_type::bottom, 1.5f * margin_);
+			.rect().snap_to(password().rect(), rect::snap_type::bottom, 1.5f * _margin);
 		do_login().events().action = [this]() { on_login(); };
 
-		page_man_.show("home");
+		_page_man.show("home");
 		return true;
 	}
 
@@ -66,8 +67,8 @@ class login : public form {
 			if (username.empty() || password.empty())
 				return;
 
-			if (username == username_ && password == password_) {
-				logged_in_ = true;
+			if (username == _username && password == _password) {
+				_logged_in = true;
 				close();
 			}
 			else
@@ -79,18 +80,18 @@ class login : public form {
 public:
 	login(const string& caption, bool& logged_in) :
 		form(caption),
-		logged_in_(logged_in) {}
+		_logged_in(logged_in) {}
 };
 
 int main() {
 	bool logged_in = false;
-	login login_("Login", logged_in);
+	login _login("Login", logged_in);
 	string error;
-	if (login_.show(error)) {
+	if (_login.show(error)) {
 		if (logged_in)
-			login_.message("Login successful!");
+			_login.message("Login successful!");
 	}
 	else
-		login_.message("Error: " + error);
+		_login.message("Error: " + error);
 	return 0;
 }
