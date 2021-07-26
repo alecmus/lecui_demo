@@ -26,7 +26,7 @@ class login : public form {
 			.allow_minimize(false)
 			.allow_resize(false);
 		_apprnc.theme(themes::light);
-		_dim.set_size({ 280, 320 });
+		_dim.set_size({ 280.f, 320.f });
 		return true;
 	}
 
@@ -61,8 +61,8 @@ class login : public form {
 
 	void on_login() {
 		try {
-			auto& username = widgets::text_field_builder::specs(*this, "home/username").text();
-			auto& password = widgets::text_field_builder::specs(*this, "home/password").text();
+			auto& username = get_text_field_specs("home/username").text();
+			auto& password = get_text_field_specs("home/password").text();
 
 			if (username.empty() || password.empty())
 				return;
