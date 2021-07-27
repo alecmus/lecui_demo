@@ -26,7 +26,7 @@ class login : public form {
 			.allow_minimize(false)
 			.allow_resize(false);
 		_apprnc.theme(themes::light);
-		_dim.set_size({ 280.f, 320.f });
+		_dim.set_size(size().width(280.f).height(320.f));
 		return true;
 	}
 
@@ -38,8 +38,8 @@ class login : public form {
 			.file("images\\avatar.png").quality(image_quality::high)
 			.rect()
 				.size(130, 130)
-				.place({ _margin, page.size().width - _margin,
-					_margin, _margin + (_dim.get_size().height / 2.f) },
+				.place({ _margin, page.size().get_width() - _margin,
+					_margin, _margin + (_dim.get_size().get_height() / 2.f) },
 					50.f, 0.f);
 
 		widgets::text_field_builder username(page, "username");
