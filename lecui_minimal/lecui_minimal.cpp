@@ -1,8 +1,9 @@
 /* The smallest possible lecui app
 */
 #include <liblec/lecui/form.h>
+using namespace liblec::lecui;
 
 int main() {
-	liblec::lecui::form("Form").message("Hello world!");
+	form("Form").message("Hello world!");
 	return 0;
 }
