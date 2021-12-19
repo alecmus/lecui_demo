@@ -94,7 +94,7 @@ int main() {
 	bool logged_in = false;
 	login _login("Login", logged_in);
 	string error;
-	if (_login.show(error)) {
+	if (_login.create(error)) {
 		if (logged_in)
 			_login.message("Login successful!");
 	}
